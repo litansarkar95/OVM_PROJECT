@@ -1,0 +1,106 @@
+CREATE TABLE divisions(
+id tinyint unsigned not null AUTO_INCREMENT PRIMARY KEY,
+    name varchar(100) not null,
+    status varchar(2) not null,
+    date date not null,
+    UNIQUE KEY (name)
+
+)
+CREATE TABLE district(
+id tinyint unsigned not null AUTO_INCREMENT PRIMARY KEY,
+    name varchar(100) not null,
+    divisionsid tinyint unsigned not null,
+    status varchar(2) not null,
+    date date not null,
+    UNIQUE KEY (name,divisionsid )
+
+)
+CREATE TABLE candidate_area(
+id SMALLINT unsigned not null AUTO_INCREMENT PRIMARY KEY,
+    seat_no varchar(10)  not null,
+    seat_name varchar(100) not null,
+    candidate_area varchar(255) not null,
+    districtid tinyint unsigned not null,
+    status varchar(4) not null,
+    date date not null,
+    UNIQUE KEY(seat_no),
+    UNIQUE KEY(seat_no,seat_name)
+   
+)
+CREATE TABLE party_list(
+     id tinyint unsigned not null AUTO_INCREMENT PRIMARY KEY, 
+     name varchar(100) not null, 
+     status varchar(2) not null,
+      date date not null,
+       UNIQUE KEY (name) 
+       )
+
+       CREATE TABLE candidate(
+id int unsigned not null AUTO_INCREMENT primary key,
+    candidate_no varchar(20) not null,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    nid varchar(50) not null,
+    contact varchar(20) not null,
+    education varchar(50) not null,
+    picture varchar(4) not null,
+    gender varchar(10) not null,
+    party_list tinyint unsigned not null,
+    dob varchar(20) not null,
+    email varchar(255) not null,
+    candidate_area SMALLINT unsigned not null,
+    nationality varchar(50) not null,
+    religion varchar(50) not null,
+    date date not null
+
+
+
+)
+
+   CREATE TABLE voter(
+id int unsigned not null AUTO_INCREMENT primary key,
+    nid varchar(20) not null,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    father_name varchar(50) not null,
+    candidate_area SMALLINT unsigned not null,
+      address text not null,
+    contact varchar(20) not null,
+    education varchar(50) not null,
+    picture varchar(4) not null,
+    gender varchar(10) not null,
+    dob varchar(20) not null,
+    email varchar(255) not null,
+    nationality varchar(50) not null,
+    religion varchar(50) not null,
+       status varchar(10) not null,
+     date date not null,
+       UNIQUE KEY(nid)
+
+
+)
+
+CREATE TABLE registration(
+id int unsigned not null AUTO_INCREMENT,
+    fullname varchar(100) not null,
+    email varchar(255) not null,
+    password varchar(35) not null,
+    gender varchar(10) not null,
+    districtid tinyint not null,
+    mobile varchar(20) not null,
+    status varchar(10) not null,
+    date date not null,
+    PRIMARY KEY(id),
+    UNIQUE(email)
+
+)
+
+CREATE TABLE voter_verify(
+id int unsigned not null AUTO_INCREMENT PRIMARY KEY,
+    code varchar(20) not null,
+    voter_nid varchar(100) not null,
+    status varchar(100) not null,
+    date datetime not null
+    
+
+)
